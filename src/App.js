@@ -1,32 +1,28 @@
-import * as React from 'react';
-import {
-  Platform,
-  StyleSheet,
-  View
-} from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import {
   StatusProvider,
   LaunchProvider
 } from './context';
-import LaunchList from './modules/Launches/components/LaunchList';
+import MainPage from './pages/MainPage';
 
-export default function App() {
-  return (
-    <StatusProvider>
-      <LaunchProvider>
-        <View style={styles.container}>
-          <LaunchList/>
-        </View>
-      </LaunchProvider>
-    </StatusProvider>
-  );
-}
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e6fcff',
-  },
-});
+const Navigation = () => (
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="main" component={MainPage} options={{ headerShown: false }}/>
+    </Stack.Navigator>
+  </NavigationContainer>
+);
+
+export default () => (
+  <StatusProvider>
+    <LaunchProvider>
+      <Navigation/>
+    </LaunchProvider>
+  </StatusProvider>
+);

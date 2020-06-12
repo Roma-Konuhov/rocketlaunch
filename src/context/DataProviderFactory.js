@@ -43,6 +43,7 @@ const DataProviderFactory = ({ fetchFn, context, dataPath = '' }) => ({ children
   const reset = () => {
     setList([]);
     setPage(-1);
+    setIsInitialized(false);
     fetchNextPage();
   };
 
