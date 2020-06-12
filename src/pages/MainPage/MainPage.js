@@ -9,7 +9,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import LaunchList from '../../modules/Launches/components/LaunchList';
 import FavouriteList from '../../modules/Launches/components/FavouriteList';
 import withFavourites from '../../context/withFavourites';
-import FavouriteTabBarIcon from '../../modules/Launches/components/FavouriteTabBarIcon';
+import FavouritesBadge from '../../modules/Launches/components/FavouritesBadge';
+import WebViewPage from '../WebViewPage';
 
 import styles from './styles';
 
@@ -43,7 +44,7 @@ const tabBarOptions = {
 const MainPage = () => (
   <Tab.Navigator tabBarOptions={tabBarOptions}>
     <Tab.Screen name="launches" component={LaunchList}/>
-    <Tab.Screen name="favourites" component={FavouriteList} options={{ tabBarIcon: FavouriteTabBarIcon }}/>
+    <Tab.Screen name="favourites" component={FavouriteList} options={{ tabBarIcon: FavouritesBadge }}/>
   </Tab.Navigator>
 );
 

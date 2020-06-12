@@ -2,14 +2,17 @@ import React from 'react';
 import {
   View,
   Text,
+  TouchableOpacity,
 } from 'react-native';
 import { compose } from 'recompose';
+import { useNavigation } from '@react-navigation/native';
 
 import withStatusData from '../../../../context/withStatusData';
 import withFavourites from '../../../../context/withFavourites';
 import {
   getStatus,
-  getLaunchDate
+  getLaunchDate,
+  getInfoUrl,
 } from '../../utils';
 import CountryFlagImage from '../CountryFlagImage';
 import RocketImage from '../RocketImage';
@@ -20,16 +23,25 @@ import styles from './styles';
 const LaunchItem = ({
   item = {},
   statusData = {},
-  favourites = {}
+  favourites = {},
 }) => {
+  const   navigation = useNavigation();
+
   const toggleFavourites = () => {
     favourites.has(item) ? favourites.remove(item) : favourites.add(item);
   };
 
+  const openWebPage = () => navigation.navigate('webview', {
+    url: getInfoUrl(item),
+    name: item.name,
+    isFavourite: favourites.has(item)
+  });
+
   return (
     <View style={styles.container}>
       <FavouriteIcon onPress={toggleFavourites} isActive={favourites.has(item)} />
-      <View style={styles.subContainer}>
+      <TouchableOpacity onPress={openWebPage}>
+        <View style={styles.subContainer}>
         <RocketImage item={item}/>
         <View style={styles.description}>
           <Text style={styles.header} ellipsizeMode="tail">{item.name}</Text>
@@ -39,7 +51,8 @@ const LaunchItem = ({
           </View>
           <Text style={styles.status}>{getStatus(item, statusData.list)}</Text>
         </View>
-      </View>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

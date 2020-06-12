@@ -20,7 +20,8 @@ const DataProviderFactory = ({ fetchFn, context, dataPath = '' }) => ({ children
   };
 
   const processError = error => {
-
+    // { status: fail, msg: "failure message" }
+    // If there is an error or no launches match your criteria, it will respond with a 404 and a json body.
   };
 
   const hasNextPage = response.offset + response.count < response.total;

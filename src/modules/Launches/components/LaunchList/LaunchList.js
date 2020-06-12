@@ -23,7 +23,7 @@ const LaunchList = ({ statusData = {}, launchData = {} }) => {
     launchData.fetchNextPage();
   }, [launchData]);
 
-  console.log(launchData.page)
+  console.log('page', launchData.page)
 
   const renderFooterSpinner = useMemo(() => {
     if (!launchData.isInitialized || launchData.isInitialized && !launchData.isLoading) {
