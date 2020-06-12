@@ -42,7 +42,7 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
 
     return (
       <View style={styles.footerSpinnerContainer}>
-        <ActivityIndicator size="small" color="#4db6ff" />
+        <ActivityIndicator size="small" color="#01042b" />
       </View>
     );
   }, [launchData.isInitialized, launchData.isLoading]);
@@ -52,7 +52,7 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
   ) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color="#4db6ff" />
+        <ActivityIndicator size="large" color="#01042b" />
       </View>
     );
   }

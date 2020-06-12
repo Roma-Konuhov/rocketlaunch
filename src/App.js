@@ -25,7 +25,7 @@ const webViewPageOptions = ({ route }) => ({
   headerRight: () => <FavouriteIcon isActive={get(route, 'params.isFavourite')} isTouchable={false}/>,
   headerTitleStyle: {
     fontSize: 16,
-    color: '#333',
+    color: '#fff',
   },
   headerTitleAlign: 'center',
   ...Platform.select({
@@ -34,7 +34,14 @@ const webViewPageOptions = ({ route }) => ({
       // when a header overlaps a status bar on IOS
       headerStatusBarHeight: 20
     }
-  })
+  }),
+  headerStyle: {
+    backgroundColor: '#01042b',
+  },
+  headerBackTitleStyle: {
+    color: '#90abd9',
+  },
+  headerTintColor: '#90abd9'
 });
 
 const App = () => (

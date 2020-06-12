@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: '#333',
+    color: '#01042b',
     flexWrap: 'wrap',
   },
 });

@@ -5,8 +5,9 @@ export default StyleSheet.create({
     flex: 1,
     padding: 10,
     flexDirection: 'row',
-    borderBottomColor: '#d7f1f4',
+    borderBottomColor: '#90abd9',
     borderBottomWidth: 1,
+    marginHorizontal: 10,
   },
   description: {
     justifyContent: 'flex-start',
@@ -16,7 +17,7 @@ export default StyleSheet.create({
   header: {
     fontSize: 12,
     fontWeight: 'bold',
-    color: '#1aeeff',
+    color: '#01042b',
     flexWrap: 'wrap',
   },
   dateContainer: {

@@ -7,7 +7,7 @@ import styles from './styles';
 const FavouriteIcon = ({ isActive, onPress, isTouchable = true }) => {
   const iconComponent = isActive
     ? <AntDesign name="heart" size={32} color="#ff5263"/>
-    : <AntDesign name="hearto" size={32} color="#aaa"/>;
+    : <AntDesign name="hearto" size={32} color="#90abd9"/>;
 
   if (!isTouchable) {
     return (

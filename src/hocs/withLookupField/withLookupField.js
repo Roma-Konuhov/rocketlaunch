@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
 import { debounce } from 'lodash';
 
 import { LOOKUP_DEBOUNCE } from '../../constants/uiConstants';
@@ -25,16 +25,17 @@ const withLookupField = Component =>
 
     render() {
       return (
-        <>
+        <View style={styles.container}>
           <TextInput
             style={styles.textInput}
             onChangeText={this.handleChange}
             value={this.state.value}
             clearButtonMode="while-editing"
             placeholder="Search..."
+            placeholderTextColor="#607692"
           />
           <Component {...this.props} searchTerm={this.state.delayedValue}/>
-        </>
+        </View>
       );
     }
   };

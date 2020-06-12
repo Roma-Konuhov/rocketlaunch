@@ -25,8 +25,11 @@ const Tab = createMaterialTopTabNavigator();
 const tabBarOptions = {
   labelStyle: {
     fontSize: 12,
-    color: '#333',
+    color: '#fff',
     fontWeight: 'bold',
+  },
+  style: {
+    backgroundColor: '#01042b',
   },
   tabStyle: {
     margin: 0,
@@ -46,7 +49,8 @@ const tabBarOptions = {
     }),
   },
   indicatorStyle: {
-    backgroundColor: '#ffd700'
+    backgroundColor: '#ffd700',
+    height: 3,
   },
   showIcon: true,
 };
@@ -55,12 +59,10 @@ const LaunchesPage = () => (
   <StatusProvider>
     <LaunchProvider>
       <FavouritesProvider>
-
         <Tab.Navigator tabBarOptions={tabBarOptions}>
           <Tab.Screen name={ROUTE_LAUNCHES} component={LaunchList}/>
           <Tab.Screen name={ROUTE_FAVOURITES} component={FavouriteList} options={{ tabBarIcon: FavouritesBadge }}/>
         </Tab.Navigator>
-
       </FavouritesProvider>
     </LaunchProvider>
   </StatusProvider>
