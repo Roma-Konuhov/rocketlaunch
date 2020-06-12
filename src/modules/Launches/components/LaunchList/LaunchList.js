@@ -14,7 +14,7 @@ import { LOOKUP_MIN_LENGTH_TO_TRIGGER } from '../../../../constants/uiConstants'
 import withStatusData from '../../../../hocs/withStatusData';
 import withLaunchData from '../../../../hocs/withLaunchData';
 import withLookupField from '../../../../hocs/withLookupField';
-import EmptyPage from '../EmptyPage';
+import EmptyList from '../EmptyList';
 import LaunchItem from '../LaunchItem';
 
 import styles from './styles';
@@ -35,7 +35,6 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
   }, [launchData]);
 
   // console.log('page', launchData.page)
-  // console.log('searchText', searchTerm)
 
   const renderFooterSpinner = useMemo(() => {
     if (!launchData.isInitialized || launchData.isInitialized && !launchData.isLoading) {
@@ -59,6 +58,11 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
     );
   }
 
+  // EmptyList is returned here (not via prop ListEmptyComponent) intentionally
+  if (launchData.isInitialized && launchData.isEmpty) {
+    return <EmptyList />
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -66,7 +70,6 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
         renderItem={LaunchItem}
         keyExtractor={item => '' + item.id}
         onEndReached={loadNextPage}
-        ListEmptyComponent={EmptyPage}
         onEndReachedThreshold={0.5}
         ListFooterComponent={renderFooterSpinner}
       />

@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useCallback,
 } from 'react';
-import { get } from 'lodash';
+import { get, isEmpty as arrayIsEmpty } from 'lodash';
 
 const DataProviderFactory = ({ fetchFn, context, dataPath = '' }) => ({ children }) => {
   const [list, setList] = useState([]);
@@ -21,6 +21,7 @@ const DataProviderFactory = ({ fetchFn, context, dataPath = '' }) => ({ children
   };
 
   const processError = error => {
+    setIsInitialized(true);
     setIsLoading(false);
     // { status: fail, msg: "failure message" }
     // If there is an error or no launches match your criteria, it will respond with a 404 and a json body.
@@ -50,6 +51,8 @@ const DataProviderFactory = ({ fetchFn, context, dataPath = '' }) => ({ children
     };
   }, [page, searchTerm]);
 
+  const isEmpty = arrayIsEmpty(list);
+
   return (
     <context.Provider value={{
       list,
@@ -58,7 +61,8 @@ const DataProviderFactory = ({ fetchFn, context, dataPath = '' }) => ({ children
       fetch,
       fetchNextPage,
       isLoading,
-      isInitialized
+      isInitialized,
+      isEmpty,
     }}>
       {children}
     </context.Provider>
