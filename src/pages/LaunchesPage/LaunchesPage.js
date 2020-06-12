@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Platform
-} from 'react-native';
+import { Platform } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import LaunchList from '../../components/LaunchList';
@@ -17,8 +14,6 @@ import {
   LaunchProvider,
   StatusProvider
 } from '../../context';
-
-import styles from './styles';
 
 const Tab = createMaterialTopTabNavigator();
 

@@ -7,7 +7,7 @@ import styles from './styles';
 
 const RocketImage = ({ item }) =>
   <Image
-    source={{ uri: getImageUrl(item) }}
+    source={getImageUrl(item)}
     style={styles.image}
   />;
 
