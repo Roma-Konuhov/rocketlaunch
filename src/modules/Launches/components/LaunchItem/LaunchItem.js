@@ -7,8 +7,8 @@ import {
 import { compose } from 'recompose';
 import { useNavigation } from '@react-navigation/native';
 
-import withStatusData from '../../../../context/withStatusData';
-import withFavourites from '../../../../context/withFavourites';
+import withStatusData from '../../../../hocs/withStatusData';
+import withFavourites from '../../../../hocs/withFavourites';
 import {
   getStatus,
   getLaunchDate,
@@ -17,6 +17,7 @@ import {
 import CountryFlagImage from '../CountryFlagImage';
 import RocketImage from '../RocketImage';
 import FavouriteIcon from '../FavouriteIcon';
+import { ROUTE_WEBVIEW } from '../../../../constants/navigationConstants';
 
 import styles from './styles';
 
@@ -25,13 +26,13 @@ const LaunchItem = ({
   statusData = {},
   favourites = {},
 }) => {
-  const   navigation = useNavigation();
+  const navigation = useNavigation();
 
   const toggleFavourites = () => {
     favourites.has(item) ? favourites.remove(item) : favourites.add(item);
   };
 
-  const openWebPage = () => navigation.navigate('webview', {
+  const openWebPage = () => navigation.navigate(ROUTE_WEBVIEW, {
     url: getInfoUrl(item),
     name: item.name,
     isFavourite: favourites.has(item)
@@ -39,9 +40,8 @@ const LaunchItem = ({
 
   return (
     <View style={styles.container}>
-      <FavouriteIcon onPress={toggleFavourites} isActive={favourites.has(item)} />
-      <TouchableOpacity onPress={openWebPage}>
-        <View style={styles.subContainer}>
+      <FavouriteIcon onPress={toggleFavourites} isActive={favourites.has(item)}/>
+      <TouchableOpacity onPress={openWebPage} style={styles.subContainer}>
         <RocketImage item={item}/>
         <View style={styles.description}>
           <Text style={styles.header} ellipsizeMode="tail">{item.name}</Text>
@@ -50,7 +50,6 @@ const LaunchItem = ({
             <CountryFlagImage item={item}/>
           </View>
           <Text style={styles.status}>{getStatus(item, statusData.list)}</Text>
-        </View>
         </View>
       </TouchableOpacity>
     </View>

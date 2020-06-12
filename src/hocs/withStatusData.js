@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusConsumer } from './StatusProvider';
+import { StatusConsumer } from '../context/StatusProvider';
 
 const withStatusData = Component => props => (
   <StatusConsumer>

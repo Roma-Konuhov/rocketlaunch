@@ -6,10 +6,10 @@ import {
 
 import styles from './styles';
 
-const EmptyLaunchList = () => (
+const EmptyPage = () => (
   <View style={styles.container}>
     <Text style={styles.text}>There is no data yet</Text>
   </View>
 );
 
-export default EmptyLaunchList;
+export default EmptyPage;

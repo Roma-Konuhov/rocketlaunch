@@ -1,5 +1,5 @@
 import React from 'react';
-import { FavouritesConsumer } from './FavouritesProvider';
+import { FavouritesConsumer } from '../context/FavouritesProvider';
 
 const withFavourites = Component => props => (
   <FavouritesConsumer>

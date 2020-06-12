@@ -1,13 +1,15 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+import { compose } from 'recompose';
 
-import withFavourites from '../../../../context/withFavourites';
-import EmptyLaunchList from '../EmptyLaunchList';
+import withFavourites from '../../../../hocs/withFavourites';
+import withLookupField from '../../../../hocs/withLookupField';
+import EmptyPage from '../EmptyPage';
 import LaunchItem from '../LaunchItem';
 
 const FavouriteList = ({ favourites }) => {
   if (favourites.isEmpty) {
-    return <EmptyLaunchList />
+    return <EmptyPage />
   }
 
   return (
@@ -19,4 +21,7 @@ const FavouriteList = ({ favourites }) => {
   )
 };
 
-export default withFavourites(FavouriteList);
+export default compose(
+  withFavourites,
+  withLookupField,
+)(FavouriteList);

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  View,
   StatusBar,
   Platform,
 } from 'react-native';
@@ -8,9 +7,9 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import LaunchList from '../../modules/Launches/components/LaunchList';
 import FavouriteList from '../../modules/Launches/components/FavouriteList';
-import withFavourites from '../../context/withFavourites';
+import withFavourites from '../../hocs/withFavourites';
 import FavouritesBadge from '../../modules/Launches/components/FavouritesBadge';
-import WebViewPage from '../WebViewPage';
+import { ROUTE_LAUNCHES, ROUTE_FAVOURITES } from '../../constants/navigationConstants';
 
 import styles from './styles';
 
@@ -43,8 +42,8 @@ const tabBarOptions = {
 
 const MainPage = () => (
   <Tab.Navigator tabBarOptions={tabBarOptions}>
-    <Tab.Screen name="launches" component={LaunchList}/>
-    <Tab.Screen name="favourites" component={FavouriteList} options={{ tabBarIcon: FavouritesBadge }}/>
+    <Tab.Screen name={ROUTE_LAUNCHES} component={LaunchList}/>
+    <Tab.Screen name={ROUTE_FAVOURITES} component={FavouriteList} options={{ tabBarIcon: FavouritesBadge }}/>
   </Tab.Navigator>
 );
 

@@ -13,6 +13,7 @@ export const fetch = ({
   enddate,
   sort,
   mode,
+  searchTerm,
   limit = DEFAULT_ITEMS_PER_PAGE,
   page = 0,
 }) => {
@@ -23,15 +24,19 @@ export const fetch = ({
     enddate,
     mode,
   };
+  if (searchTerm) {
+    params.name = searchTerm;
+  }
   const querystring = qs.stringify(params);
   const url = `${ROCKETLAUNCH_SERVICE_URL}${uri}?${querystring}`;
 
   return ajax.getJSON(url);
 };
 
-export const fetchLaunches = page => fetch({
+export const fetchLaunches = ({ page, searchTerm }) => fetch({
   uri: 'launch',
   page,
+  searchTerm,
   enddate: moment().format('YYYY-MM-DD'),
   sort: DEFAULT_SORT_ORDER,
   mode: 'verbose',

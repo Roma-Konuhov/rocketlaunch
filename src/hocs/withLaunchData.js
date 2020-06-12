@@ -1,5 +1,5 @@
 import React from 'react';
-import { LaunchConsumer } from './LaunchProvider';
+import { LaunchConsumer } from '../context/LaunchProvider';
 
 const withLaunchData = Component => props => (
   <LaunchConsumer>

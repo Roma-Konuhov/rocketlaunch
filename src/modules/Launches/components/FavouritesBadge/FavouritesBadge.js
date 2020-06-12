@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import withFavourites from '../../../../context/withFavourites';
+import withFavourites from '../../../../hocs/withFavourites';
 
 import styles from './styles';
 

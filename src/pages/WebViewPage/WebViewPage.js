@@ -1,16 +1,15 @@
 import React from 'react';
 import { WebView } from 'react-native-webview';
 
+import EmptyPage from '../../modules/Launches/components/EmptyPage';
+
 const WebViewPage = ({ route }) => {
   if (!route || !route.params) {
-    return null;
+    return <EmptyPage />;
   }
 
   return (
-    <WebView
-      source={{ uri: route.params.url }}
-      style={{ marginTop: 20 }}
-    />
+    <WebView source={{ uri: route.params.url }} />
   );
 };
 

@@ -12,6 +12,7 @@ import {
 import MainPage from './pages/MainPage';
 import WebViewPage from './pages/WebViewPage';
 import FavouriteIcon from './modules/Launches/components/FavouriteIcon';
+import { ROUTE_MAIN, ROUTE_WEBVIEW } from './constants/navigationConstants';
 
 const Stack = createStackNavigator();
 
@@ -28,8 +29,8 @@ const webViewPageOptions = ({ route }) => ({
 const Navigation = () => (
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="main" component={MainPage} options={mainPageOptions}/>
-      <Stack.Screen name="webview" component={WebViewPage} options={webViewPageOptions}/>
+      <Stack.Screen name={ROUTE_MAIN} component={MainPage} options={mainPageOptions}/>
+      <Stack.Screen name={ROUTE_WEBVIEW} component={WebViewPage} options={webViewPageOptions}/>
     </Stack.Navigator>
   </NavigationContainer>
 );

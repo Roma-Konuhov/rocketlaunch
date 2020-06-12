@@ -34,6 +34,7 @@ export default StyleSheet.create({
     color: '#333',
   },
   subContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: '100%',
   }
 });
