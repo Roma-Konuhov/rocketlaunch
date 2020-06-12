@@ -7,8 +7,8 @@ import {
 import { compose } from 'recompose';
 import { useNavigation } from '@react-navigation/native';
 
-import withStatusData from '../../../../hocs/withStatusData';
-import withFavourites from '../../../../hocs/withFavourites';
+import withStatusData from '../../hocs/withStatusData';
+import withFavourites from '../../hocs/withFavourites';
 import {
   getStatus,
   getLaunchDate,
@@ -17,7 +17,7 @@ import {
 import CountryFlagImage from '../CountryFlagImage';
 import RocketImage from '../RocketImage';
 import FavouriteIcon from '../FavouriteIcon';
-import { ROUTE_WEBVIEW } from '../../../../constants/navigationConstants';
+import { ROUTE_WEBVIEW } from '../../constants/navigationConstants';
 
 import styles from './styles';
 

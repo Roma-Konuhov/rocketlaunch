@@ -11,7 +11,7 @@ import {
 } from './context';
 import MainPage from './pages/MainPage';
 import WebViewPage from './pages/WebViewPage';
-import FavouriteIcon from './modules/Launches/components/FavouriteIcon';
+import FavouriteIcon from './components/FavouriteIcon';
 import { ROUTE_MAIN, ROUTE_WEBVIEW } from './constants/navigationConstants';
 
 const Stack = createStackNavigator();

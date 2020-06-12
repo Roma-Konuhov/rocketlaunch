@@ -1,7 +1,7 @@
 import React from 'react';
 import { WebView } from 'react-native-webview';
 
-import EmptyPage from '../../modules/Launches/components/EmptyPage';
+import EmptyPage from '../../components/EmptyPage';
 
 const WebViewPage = ({ route }) => {
   if (!route || !route.params) {

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import { compose } from 'recompose';
 
-import { LOOKUP_MIN_LENGTH_TO_TRIGGER } from '../../../../constants/uiConstants';
-import withFavourites from '../../../../hocs/withFavourites';
-import withLookupField from '../../../../hocs/withLookupField';
+import { LOOKUP_MIN_LENGTH_TO_TRIGGER } from '../../constants/uiConstants';
+import withFavourites from '../../hocs/withFavourites';
+import withLookupField from '../../hocs/withLookupField';
 import EmptyList from '../EmptyList';
 import LaunchItem from '../LaunchItem';
 

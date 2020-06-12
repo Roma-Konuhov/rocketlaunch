@@ -5,7 +5,7 @@ import { getCountryFlagUrl } from '../../utils';
 import {
   COUNTRY_FLAG_WIDTH,
   COUNTRY_FLAG_HEIGHT
-} from '../../../../constants/uiConstants';
+} from '../../constants/uiConstants';
 
 const CountryFlagImage = ({ item }) =>
   <Image

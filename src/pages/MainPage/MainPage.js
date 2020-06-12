@@ -5,10 +5,10 @@ import {
 } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import LaunchList from '../../modules/Launches/components/LaunchList';
-import FavouriteList from '../../modules/Launches/components/FavouriteList';
+import LaunchList from '../../components/LaunchList';
+import FavouriteList from '../../components/FavouriteList';
 import withFavourites from '../../hocs/withFavourites';
-import FavouritesBadge from '../../modules/Launches/components/FavouritesBadge';
+import FavouritesBadge from '../../components/FavouritesBadge';
 import { ROUTE_LAUNCHES, ROUTE_FAVOURITES } from '../../constants/navigationConstants';
 
 import styles from './styles';
