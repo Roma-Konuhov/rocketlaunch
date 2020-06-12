@@ -14,7 +14,8 @@ const withLookupField = Component =>
         value: undefined,
         delayedValue: undefined,
       };
-      this.debouncedChangeHandler = debounce(delayedValue => this.setState({ delayedValue }), LOOKUP_DEBOUNCE);
+      const debounceTime = props.debounceTime !== undefined ? props.debounceTime : LOOKUP_DEBOUNCE;
+      this.debouncedChangeHandler = debounce(delayedValue => this.setState({ delayedValue }), debounceTime);
     }
 
     handleChange = value => {

@@ -1,51 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
+  Image,
+  ImageBackground,
   StatusBar,
-  Platform,
+  TouchableOpacity,
 } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import LaunchList from '../../components/LaunchList';
-import FavouriteList from '../../components/FavouriteList';
-import withFavourites from '../../hocs/withFavourites';
-import FavouritesBadge from '../../components/FavouritesBadge';
-import { ROUTE_LAUNCHES, ROUTE_FAVOURITES } from '../../constants/navigationConstants';
+import { ROUTE_MAIN } from '../../constants/navigationConstants';
+import LaunchesPage from '../LaunchesPage';
 
 import styles from './styles';
 
-const Tab = createMaterialTopTabNavigator();
+const MainPage = ({ navigation }) => {
+  const [isAppStarted, setIsAppStarted] = useState(false);
 
-const tabBarOptions = {
-  labelStyle: {
-    fontSize: 12,
+  if (isAppStarted) {
+    return <LaunchesPage />;
+  }
 
-  },
-  tabStyle: {
-    margin: 0,
-    height: 60,
-    flex: 1,
-    justifyContent: 'flex-end',
-    ...Platform.select({
-      ios: {
-        paddingTop: 30,
-      },
-      android: {
-        paddingVertical: 0,
-      },
-    }),
-  },
-  indicatorStyle: {
-    backgroundColor: '#ffd700'
-  },
-  showIcon: true,
+  const launchApp = () => {
+    setIsAppStarted(true);
+    navigation.navigate(ROUTE_MAIN);
+  };
+
+  return (
+    <ImageBackground source={require('./assets/sky.jpg')} style={styles.container}>
+      <StatusBar hidden />
+      <TouchableOpacity onPress={launchApp}>
+        <Image source={require('./assets/startbutton256.png')} style={{ width: 256, height: 256 }} />
+      </TouchableOpacity>
+    </ImageBackground>
+  );
 };
 
-const MainPage = () => (
-  <Tab.Navigator tabBarOptions={tabBarOptions}>
-    <Tab.Screen name={ROUTE_LAUNCHES} component={LaunchList}/>
-    <Tab.Screen name={ROUTE_FAVOURITES} component={FavouriteList} options={{ tabBarIcon: FavouritesBadge }}/>
-  </Tab.Navigator>
-);
-
-export default withFavourites(MainPage);
+export default MainPage;
 

@@ -24,7 +24,6 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
     if (searchTerm && searchTerm.length > 0 && searchTerm.length < LOOKUP_MIN_LENGTH_TO_TRIGGER) {
       return;
     }
-    !launchData.isLoading &&
     launchData.fetch({ searchTerm })
   }, [searchTerm]);
 
@@ -70,7 +69,7 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
         renderItem={LaunchItem}
         keyExtractor={item => '' + item.id}
         onEndReached={loadNextPage}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.3}
         ListFooterComponent={renderFooterSpinner}
       />
     </View>
