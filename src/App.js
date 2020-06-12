@@ -5,7 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import {
   StatusProvider,
-  LaunchProvider
+  LaunchProvider,
+  FavouritesProvider,
 } from './context';
 import MainPage from './pages/MainPage';
 
@@ -22,7 +23,9 @@ const Navigation = () => (
 export default () => (
   <StatusProvider>
     <LaunchProvider>
-      <Navigation/>
+      <FavouritesProvider>
+        <Navigation/>
+      </FavouritesProvider>
     </LaunchProvider>
   </StatusProvider>
 );

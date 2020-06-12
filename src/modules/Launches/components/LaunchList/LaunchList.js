@@ -1,15 +1,11 @@
 import React, {
-  useState,
-  useEffect,
   useMemo,
   useCallback,
 } from 'react';
 import {
   View,
-  Text,
   Button,
   FlatList,
-  StyleSheet,
   ActivityIndicator,
 } from 'react-native';
 import { compose } from 'recompose';
@@ -18,16 +14,7 @@ import withStatusData from '../../../../context/withStatusData';
 import withLaunchData from '../../../../context/withLaunchData';
 import LaunchItem from '../LaunchItem';
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 20,
-    flex: 1,
-    justifyContent: 'center',
-  },
-  footerSpinnerContainer: {
-    margin: 5,
-  }
-});
+import styles from './styles';
 
 const LaunchList = ({ statusData = {}, launchData = {} }) => {
   const loadNextPage = useCallback(() => {

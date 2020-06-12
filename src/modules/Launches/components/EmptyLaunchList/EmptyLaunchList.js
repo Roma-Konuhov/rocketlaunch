@@ -1,19 +1,15 @@
 import React from 'react';
 import {
+  View,
   Text,
-  StyleSheet
 } from 'react-native';
 
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 16,
-    color: '#333',
-    flexWrap: 'wrap',
-  },
-});
+import styles from './styles';
 
 const EmptyLaunchList = () => (
-  <Text style={styles.text}>Data is not available</Text>
+  <View style={styles.container}>
+    <Text style={styles.text}>There is no data yet</Text>
+  </View>
 );
 
 export default EmptyLaunchList;
