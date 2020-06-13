@@ -4,8 +4,8 @@ import { get, find, isEmpty, isObject } from 'lodash';
 
 /**
  * Tries to get info URL from root level of the item
- * if it's empty then from `missions` subobject
- * if it's empty then from `rocket` subobject
+ * if it's empty then from `missions` sub object
+ * if it's empty then from `rocket` sub object
  *
  * @param item {Object}
  * @returns {string}
@@ -30,7 +30,7 @@ export const getInfoUrl = (item = {}) => {
 
   const rocketWikiUrl = get(item, 'rocket.wikiURL');
 
-  return rocketWikiUrl;
+  return rocketWikiUrl || '';
 };
 
 /**
@@ -42,11 +42,10 @@ export const getInfoUrl = (item = {}) => {
  */
 export const getImageUrl = item => {
   const imageSizes  = get(item, 'rocket.imageSizes');
-  const defaultImageUrl = get(item, 'rocket.imageURL');
+  let imageUrl = get(item, 'rocket.imageURL');
   const httpRe = new RegExp('https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)', 'i');
-  let imageUrl;
 
-  if (!isEmpty(imageSizes) && httpRe.test(defaultImageUrl)) {
+  if (!isEmpty(imageSizes) && httpRe.test(imageUrl)) {
     const minImageSize = Math.min(...imageSizes);
     const maxImageSize = Math.max(...imageSizes);
 
@@ -55,10 +54,11 @@ export const getImageUrl = item => {
     const re = new RegExp(`\\.(\\w{3,4})_${maxImageSize}\\.(\\w{3,4})$`, 'i');
 
     // and replaces it with small image filename: <filename>.<ext>_<minsize>.<ext>
-    imageUrl = defaultImageUrl.replace(re, `.$1_${minImageSize}.$2`);
+    imageUrl = imageUrl.replace(re, `.$1_${minImageSize}.$2`);
   }
 
-  if (!imageUrl) {
+  // check imageUrl one more time after possible replacement
+  if (!httpRe.test(imageUrl)) {
     return require('./assets/placeholder.png');
   }
 
@@ -109,6 +109,10 @@ export const getLaunchDate = item => {
 export const getCountryFlagUrl = item => {
   const cc3alpha = get(item, 'lsp.countryCode');
   const cc2alpha = countries.alpha3ToAlpha2(cc3alpha);
+
+  if (!cc2alpha) {
+    return '';
+  }
 
   return `https://www.countryflags.io/${cc2alpha}/flat/24.png`
 };

@@ -67,7 +67,7 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
         renderItem={LaunchItem}
         keyExtractor={item => '' + item.id}
         onEndReached={loadNextPage}
-        onEndReachedThreshold={0.3}
+        onEndReachedThreshold={0.5}
         ListFooterComponent={renderFooterSpinner}
       />
     </View>

@@ -5,9 +5,10 @@ import { trim } from 'lodash';
  *
  * @param list {Array}
  * @param searchTerm {string}
+ * @param searchByField {string}
  * @returns {Array}
  */
-export const filterList = (list = [], searchTerm) => {
+export const filterList = (list = [], searchTerm, searchByField = 'name') => {
   const term = trim(searchTerm);
 
   if (!term) {
@@ -15,6 +16,6 @@ export const filterList = (list = [], searchTerm) => {
   }
 
   return list.filter(
-    item => new RegExp(term, 'i').test(item.name)
+    item => new RegExp(term, 'i').test(item[searchByField])
   );
 };
