@@ -1,33 +1,14 @@
 import { ajax } from 'rxjs/ajax';
 import moment from 'moment';
-import qs from 'qs';
 
+import { getQueryString } from '../utils';
 import {
   ROCKETLAUNCH_SERVICE_URL,
-  DEFAULT_ITEMS_PER_PAGE,
   DEFAULT_SORT_ORDER,
 } from '../constants/apiConstants';
 
-export const fetch = ({
-  uri,
-  enddate,
-  sort,
-  mode,
-  searchTerm,
-  limit = DEFAULT_ITEMS_PER_PAGE,
-  page = 0,
-}) => {
-  const params = {
-    limit,
-    offset: page*limit,
-    sort,
-    enddate,
-    mode,
-  };
-  if (searchTerm) {
-    params.name = searchTerm;
-  }
-  const querystring = qs.stringify(params);
+export const fetch = ({ uri, ...qsParams }) => {
+  const querystring = getQueryString(qsParams);
   const url = `${ROCKETLAUNCH_SERVICE_URL}${uri}?${querystring}`;
 
   return ajax.getJSON(url);

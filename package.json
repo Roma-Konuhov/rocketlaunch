@@ -39,12 +39,17 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@testing-library/jest-native": "^3.1.0",
+    "@testing-library/react-native": "^5.0.3",
     "babel-jest": "~25.2.6",
     "jest": "~25.2.6",
     "react-test-renderer": "~16.9.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "./jest.setup.js"
+    ]
   },
   "private": true
 }

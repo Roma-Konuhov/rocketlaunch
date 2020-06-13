@@ -9,6 +9,7 @@ import {
 
 const CountryFlagImage = ({ item }) =>
   <Image
+    testID="country-flag-image"
     source={{ uri: getCountryFlagUrl(item) }}
     style={{ width: COUNTRY_FLAG_WIDTH, height: COUNTRY_FLAG_HEIGHT }}
   />;

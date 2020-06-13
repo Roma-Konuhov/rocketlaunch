@@ -8,7 +8,7 @@ import styles from './styles';
 
 const EmptyList = () => (
   <View style={styles.container}>
-    <Text style={styles.text}>List is empty</Text>
+    <Text style={styles.text} testID="text">List is empty</Text>
   </View>
 );
 
