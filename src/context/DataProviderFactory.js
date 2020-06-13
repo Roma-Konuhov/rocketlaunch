@@ -56,7 +56,6 @@ const DataProviderFactory = ({ fetchFn, context, dataPath = '' }) => ({ children
   return (
     <context.Provider value={{
       list,
-      page,
       hasNextPage,
       fetch,
       fetchNextPage,

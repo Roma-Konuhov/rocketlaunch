@@ -56,7 +56,16 @@ const LaunchItem = ({
   );
 };
 
+const shouldUpdate = (
+  { favourites: prevFavourites },
+  { favourites, item }
+) =>
+  prevFavourites.has(item) === favourites.has(item);
+
 export default compose(
   withFavourites,
-  withStatusData
-)(LaunchItem);
+  withStatusData,
+)(React.memo(
+  LaunchItem,
+  shouldUpdate,
+));

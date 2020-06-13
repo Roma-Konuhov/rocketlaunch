@@ -33,8 +33,6 @@ const LaunchList = ({ statusData = {}, launchData = {}, searchTerm }) => {
     launchData.fetchNextPage();
   }, [launchData]);
 
-  // console.log('page', launchData.page)
-
   const renderFooterSpinner = useMemo(() => {
     if (!launchData.isInitialized || launchData.isInitialized && !launchData.isLoading) {
       return null;

@@ -1,51 +1,64 @@
-import React, {
-  useState,
-  useEffect
-} from 'react';
+import React, { useReducer } from 'react';
 import {
   isEmpty as arrayIsEmpty,
   remove as removeFromArray,
   findIndex,
-  clone
 } from 'lodash';
+
+import { filterList } from '../utils';
 
 export const FavouritesContext = React.createContext();
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'add':
+      const listForAdd = [...state.originalList, action.item];
+      return {
+        ...state,
+        list: filterList(listForAdd, state.searchTerm),
+        originalList: listForAdd,
+      };
+    case 'remove':
+      const listForRemove = [...state.originalList];
+      removeFromArray(listForRemove, { id: action.item.id });
+      return {
+        ...state,
+        list: filterList(listForRemove, state.searchTerm),
+        originalList: listForRemove,
+      };
+    case 'filter':
+      return {
+        ...state,
+        list: filterList(state.originalList, action.searchTerm),
+        searchTerm: action.searchTerm,
+      };
+  }
+};
+
 export const FavouritesProvider = ({ children }) => {
-  const [originalList, setOriginalList] = useState([]);
-  const [list, setList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState();
-
-  useEffect(() => {
-    setList(getList());
-  }, [originalList, searchTerm]);
-
-  const getList = () => {
-    if (searchTerm) {
-      return originalList.filter(item => new RegExp(searchTerm, 'i').test(item.name));
-    }
-    return originalList;
+  const initialState = {
+    list: [],
+    originalList: [],
+    searchTerm: undefined,
   };
 
-  const add = item => setOriginalList([...originalList, item]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const remove = item => {
-    removeFromArray(originalList, { id: item.id });
-    // the following row is required to update child components
-    setOriginalList(clone(originalList));
-  };
+  const add = item => dispatch({ type: 'add', item });
 
-  const isEmpty = arrayIsEmpty(list);
+  const remove = item => dispatch({ type: 'remove', item });
 
-  const has = item => findIndex(originalList, { id: item.id }) >= 0;
+  const filterBy = searchTerm => dispatch({ type: 'filter', searchTerm });
 
-  const filterBy = searchTerm => setSearchTerm(searchTerm);
+  const has = item => findIndex(state.originalList, { id: item.id }) >= 0;
 
-  const amount = originalList.length;
+  const isEmpty = arrayIsEmpty(state.list);
+
+  const amount = state.originalList.length;
 
   return (
     <FavouritesContext.Provider value={{
-      list,
+      ...state,
       amount,
       add,
       remove,
