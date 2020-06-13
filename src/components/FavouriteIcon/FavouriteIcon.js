@@ -18,7 +18,7 @@ const FavouriteIcon = ({ isActive, onPress, isTouchable = true }) => {
   }
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={onPress} testID="favourite-icon">
       {iconComponent}
     </TouchableOpacity>
   );
