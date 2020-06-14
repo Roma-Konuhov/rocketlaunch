@@ -13,12 +13,12 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     paddingLeft: 10,
     flexGrow: 1,
+    flex: 1,
   },
   header: {
     fontSize: 12,
     fontWeight: 'bold',
     color: '#01042b',
-    flexWrap: 'wrap',
   },
   dateContainer: {
     flex: 1,
@@ -35,7 +35,7 @@ export default StyleSheet.create({
     color: '#333',
   },
   subContainer: {
+    flex: 1,
     flexDirection: 'row',
-    width: '100%',
   }
 });

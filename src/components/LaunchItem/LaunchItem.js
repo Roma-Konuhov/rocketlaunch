@@ -44,7 +44,7 @@ export const LaunchItem = ({
       <TouchableOpacity onPress={openWebPage} style={styles.subContainer}>
         <RocketImage item={item}/>
         <View style={styles.description}>
-          <Text style={styles.header} ellipsizeMode="tail" testID="header">{item.name}</Text>
+          <Text style={styles.header} ellipsizeMode="tail" testID="header" numberOfLines={2}>{item.name}</Text>
           <View style={styles.dateContainer}>
             <Text style={styles.date} testID="launch-date">{getLaunchDate(item)}</Text>
             <CountryFlagImage item={item}/>
