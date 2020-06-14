@@ -59,7 +59,7 @@ export const getImageUrl = item => {
 
   // check imageUrl one more time after possible replacement
   if (!httpRe.test(imageUrl)) {
-    return require('./assets/placeholder.png');
+    return require('./assets/rocketPlaceholder.png');
   }
 
   return { uri: imageUrl };
@@ -98,21 +98,23 @@ export const getLaunchDate = item => {
 /**
  * Returns URL for 3rd party service www.countryflags.io
  * which provides flag images. But this service requires 2-alpha
- * country codes.
+ * country codes whereas rocket launch API provides 3-alpha codes.
  *
- * Since item contains 3-alpha code country this function makes conversion
- * 3-alpha country code to a 2-alpha code
+ * That is why this function makes conversion
+ * of a 3-alpha country code to a 2-alpha code
  *
  * @param item
- * @returns {string}
+ * @returns {{uri: string} || <File reference>}
  */
 export const getCountryFlagUrl = item => {
   const cc3alpha = get(item, 'lsp.countryCode');
   const cc2alpha = countries.alpha3ToAlpha2(cc3alpha);
 
   if (!cc2alpha) {
-    return '';
+    return require('./assets/flagPlaceholder.png');
   }
 
-  return `https://www.countryflags.io/${cc2alpha}/flat/24.png`
+  const uri = `https://www.countryflags.io/${cc2alpha}/flat/24.png`;
+
+  return { uri };
 };

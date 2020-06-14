@@ -6,19 +6,19 @@ import styles from './styles';
 
 const FavouriteIcon = ({ isActive, onPress, isTouchable = true }) => {
   const iconComponent = isActive
-    ? <AntDesign name="heart" size={32} color="#ff5263"/>
-    : <AntDesign name="hearto" size={32} color="#90abd9"/>;
+    ? <AntDesign name="heart" size={32} color="#ff5263" testID="icon-heart"/>
+    : <AntDesign name="hearto" size={32} color="#90abd9" testID="icon-hearto"/>;
 
   if (!isTouchable) {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} testID="untouchable-favourite-icon">
         {iconComponent}
       </View>
     );
   }
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress} testID="favourite-icon">
+    <TouchableOpacity style={styles.container} onPress={onPress} testID="touchable-favourite-icon">
       {iconComponent}
     </TouchableOpacity>
   );

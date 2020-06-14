@@ -10,7 +10,12 @@ import styles from './styles';
 
 const FavouritesBadge = ({ favourites = {} }) => (
   <View style={styles.container}>
-    <Text style={styles.text}>{favourites.amount}</Text>
+    <Text
+      style={styles.text}
+      testID="favourite-badge"
+    >
+      {favourites.amount || 0}
+    </Text>
   </View>
 );
 

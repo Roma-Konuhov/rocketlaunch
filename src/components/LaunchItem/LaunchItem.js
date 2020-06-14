@@ -21,7 +21,7 @@ import { ROUTE_WEBVIEW } from '../../constants/navigationConstants';
 
 import styles from './styles';
 
-const LaunchItem = ({
+export const LaunchItem = ({
   item = {},
   statusData = {},
   favourites = {},
@@ -39,17 +39,17 @@ const LaunchItem = ({
   });
 
   return (
-    <View style={styles.container}>
-      <FavouriteIcon onPress={toggleFavourites} isActive={favourites.has(item)}/>
+    <View style={styles.container} testID="item">
+      <FavouriteIcon onPress={toggleFavourites} isActive={favourites.has(item)} />
       <TouchableOpacity onPress={openWebPage} style={styles.subContainer}>
         <RocketImage item={item}/>
         <View style={styles.description}>
-          <Text style={styles.header} ellipsizeMode="tail">{item.name}</Text>
+          <Text style={styles.header} ellipsizeMode="tail" testID="header">{item.name}</Text>
           <View style={styles.dateContainer}>
-            <Text style={styles.date}>{getLaunchDate(item)}</Text>
+            <Text style={styles.date} testID="launch-date">{getLaunchDate(item)}</Text>
             <CountryFlagImage item={item}/>
           </View>
-          <Text style={styles.status}>{getStatus(item, statusData.list)}</Text>
+          <Text style={styles.status} testID="launch-status">{getStatus(item, statusData.list)}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -62,10 +62,12 @@ const shouldUpdate = (
 ) =>
   prevFavourites.has(item) === favourites.has(item);
 
-export default compose(
+const enhance = compose(
   withFavourites,
   withStatusData,
-)(React.memo(
+);
+
+export default enhance(React.memo(
   LaunchItem,
   shouldUpdate,
 ));

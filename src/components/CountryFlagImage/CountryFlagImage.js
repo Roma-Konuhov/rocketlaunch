@@ -2,16 +2,14 @@ import { Image } from 'react-native';
 import React from 'react';
 
 import { getCountryFlagUrl } from '../../utils';
-import {
-  COUNTRY_FLAG_WIDTH,
-  COUNTRY_FLAG_HEIGHT
-} from '../../constants/uiConstants';
+
+import styles from './styles';
 
 const CountryFlagImage = ({ item }) =>
   <Image
     testID="country-flag-image"
-    source={{ uri: getCountryFlagUrl(item) }}
-    style={{ width: COUNTRY_FLAG_WIDTH, height: COUNTRY_FLAG_HEIGHT }}
+    source={getCountryFlagUrl(item)}
+    style={styles.image}
   />;
 
 export default CountryFlagImage;

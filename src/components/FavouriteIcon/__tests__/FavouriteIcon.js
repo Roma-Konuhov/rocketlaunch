@@ -1,19 +1,38 @@
 import 'react-native';
 import React from 'react';
-import CountryFlagImage from '../FavouriteIcon';
-import { AntDesign } from '@expo/vector-icons';
-
-import { create, act } from 'react-test-renderer';
-
+import View from 'react-native';
 import {
   cleanup,
   render
 } from '@testing-library/react-native';
 
-describe('Component CountryFlagImage', () => {
+import FavouriteIcon from '../FavouriteIcon';
 
-  test('renders with proper country code URL', () => {
-    const renderer = create(<FavouriteIcon />);
-    expect(renderer.findByType(AntDesign).props.name).toBe('hearto');
+jest.mock('@expo/vector-icons', () => {
+  const View = require('react-native').View;
+  return {
+    AntDesign: props => <View {...props} />
+}});
+
+describe('Component FavouriteIcon', () => {
+
+  afterEach(cleanup);
+
+  test('renders `countered heart` icon if prop `isActive` is not passed or false', () => {
+    const { queryByTestId } = render(<FavouriteIcon />);
+    const iconHeart = queryByTestId('icon-hearto');
+    expect(queryByTestId('touchable-favourite-icon')).toContainElement(iconHeart);
+  });
+
+  test('renders `filled heart` icon if prop `isActive` is true', () => {
+    const { queryByTestId } = render(<FavouriteIcon isActive={true} />);
+    const iconHeart = queryByTestId('icon-heart');
+    expect(queryByTestId('touchable-favourite-icon')).toContainElement(iconHeart);
+  });
+
+  test('renders `untouchable` icon if prop `isTouchable` is false', () => {
+    const { queryByTestId } = render(<FavouriteIcon isTouchable={false} />);
+    const iconHeart = queryByTestId('icon-hearto');
+    expect(queryByTestId('untouchable-favourite-icon')).toContainElement(iconHeart);
   });
 });

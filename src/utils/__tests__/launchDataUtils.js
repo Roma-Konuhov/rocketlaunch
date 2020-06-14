@@ -114,7 +114,7 @@ describe('launchDataUtils', () => {
           'imageURL': ''
         }
       };
-      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/utils/assets/placeholder.png" });
+      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/utils/assets/rocketPlaceholder.png" });
     });
 
     test('should return link to a smallest image if imageSizes is not empty', () => {
@@ -150,7 +150,7 @@ describe('launchDataUtils', () => {
           'imageURL': 'notvalidurl'
         }
       };
-      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/utils/assets/placeholder.png" });
+      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/utils/assets/rocketPlaceholder.png" });
     });
   });
 
@@ -195,13 +195,13 @@ describe('launchDataUtils', () => {
   describe('getCountryFlagUrl()', () => {
     test('should return proper link to a flag image if item contains valid country code', () => {
       const item = { lsp: { countryCode: 'USA' } };
-      const expectedUrl = `https://www.countryflags.io/US/flat/24.png`;
-      expect(getCountryFlagUrl(item)).toBe(expectedUrl);
+      const expectedUrl = { uri: `https://www.countryflags.io/US/flat/24.png` };
+      expect(getCountryFlagUrl(item)).toEqual(expectedUrl);
     });
 
     test('should return empty string if item contains invalid country code', () => {
       const item = { lsp: { countryCode: '' } };
-      expect(getCountryFlagUrl(item)).toBe('');
+      expect(getCountryFlagUrl(item)).toEqual({ testUri: "../../../src/utils/assets/flagPlaceholder.png" });
     });
   });
 });

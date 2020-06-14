@@ -14,7 +14,7 @@ describe('Component CountryFlagImage', () => {
 
   test('renders with proper country code URL', () => {
     const countryFlagUrl = 'countryFlagUrl';
-    utils.getCountryFlagUrl = jest.fn().mockReturnValue(countryFlagUrl);
+    utils.getCountryFlagUrl = jest.fn().mockReturnValue({ uri: countryFlagUrl });
 
     const { queryByTestId } = render(<CountryFlagImage item={{}} />);
     expect(queryByTestId('country-flag-image')).toHaveProp('source', { uri: countryFlagUrl });

@@ -7,6 +7,7 @@ import styles from './styles';
 
 const RocketImage = ({ item }) =>
   <Image
+    testID="rocket-image"
     source={getImageUrl(item)}
     style={styles.image}
   />;
