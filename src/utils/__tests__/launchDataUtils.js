@@ -114,7 +114,7 @@ describe('launchDataUtils', () => {
           'imageURL': ''
         }
       };
-      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/utils/assets/rocketPlaceholder.png" });
+      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/assets/rocketPlaceholder.png" });
     });
 
     test('should return link to a smallest image if imageSizes is not empty', () => {
@@ -150,7 +150,7 @@ describe('launchDataUtils', () => {
           'imageURL': 'notvalidurl'
         }
       };
-      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/utils/assets/rocketPlaceholder.png" });
+      expect(getImageUrl(item)).toEqual({ testUri: "../../../src/assets/rocketPlaceholder.png" });
     });
   });
 
@@ -201,7 +201,7 @@ describe('launchDataUtils', () => {
 
     test('should return empty string if item contains invalid country code', () => {
       const item = { lsp: { countryCode: '' } };
-      expect(getCountryFlagUrl(item)).toEqual({ testUri: "../../../src/utils/assets/flagPlaceholder.png" });
+      expect(getCountryFlagUrl(item)).toEqual({ testUri: "../../../src/assets/flagPlaceholder.png" });
     });
   });
 });
