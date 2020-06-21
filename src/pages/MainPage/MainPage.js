@@ -24,10 +24,10 @@ const MainPage = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground source={require('./assets/sky.jpg')} style={styles.container}>
+    <ImageBackground source={require('../../assets/sky.jpg')} style={styles.container}>
       <StatusBar hidden />
       <TouchableOpacity onPress={launchApp}>
-        <Image source={require('./assets/startbutton256.png')} style={{ width: 256, height: 256 }} />
+        <Image source={require('../../assets/startbutton256.png')} style={{ width: 256, height: 256 }} />
       </TouchableOpacity>
     </ImageBackground>
   );

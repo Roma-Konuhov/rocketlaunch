@@ -16,7 +16,7 @@ import {
 } from '../../utils';
 import CountryFlagImage from '../CountryFlagImage';
 import RocketImage from '../RocketImage';
-import FavouriteIcon from '../FavouriteIcon';
+import FavouritesIcon from '../FavouritesIcon';
 import { ROUTE_WEBVIEW } from '../../constants/navigationConstants';
 
 import styles from './styles';
@@ -40,7 +40,7 @@ export const LaunchItem = ({
 
   return (
     <View style={styles.container} testID="item">
-      <FavouriteIcon onPress={toggleFavourites} isActive={favourites.has(item)} />
+      <FavouritesIcon onPress={toggleFavourites} isActive={favourites.has(item)} />
       <TouchableOpacity onPress={openWebPage} style={styles.subContainer}>
         <RocketImage item={item}/>
         <View style={styles.description}>

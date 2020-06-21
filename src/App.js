@@ -7,7 +7,7 @@ import { get } from 'lodash';
 
 import MainPage from './pages/MainPage';
 import WebViewPage from './pages/WebViewPage';
-import FavouriteIcon from './components/FavouriteIcon';
+import FavouritesIcon from './components/FavouritesIcon';
 import {
   ROUTE_MAIN,
   ROUTE_WEBVIEW
@@ -20,9 +20,16 @@ const mainPageOptions = {
   headerShown: false,
 };
 
+const renderFavouritesIcon = route => () =>
+  <FavouritesIcon
+    isActive={get(route, 'params.isFavourite')}
+    isTouchable={false}
+    color="#90abd9"
+  />;
+
 const webViewPageOptions = ({ route }) => ({
   title: get(route, 'params.name'),
-  headerRight: () => <FavouriteIcon isActive={get(route, 'params.isFavourite')} isTouchable={false}/>,
+  headerRight: renderFavouritesIcon(route),
   headerTitleStyle: {
     fontSize: 16,
     color: '#fff',

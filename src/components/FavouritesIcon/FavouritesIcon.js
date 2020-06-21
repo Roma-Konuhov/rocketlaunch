@@ -4,10 +4,10 @@ import { AntDesign } from '@expo/vector-icons';
 
 import styles from './styles';
 
-const FavouriteIcon = ({ isActive, onPress, isTouchable = true }) => {
+const FavouritesIcon = ({ isActive, onPress, color, isTouchable = true }) => {
   const iconComponent = isActive
-    ? <AntDesign name="heart" size={32} color="#ff5263" testID="icon-heart"/>
-    : <AntDesign name="hearto" size={32} color="#90abd9" testID="icon-hearto"/>;
+    ? <AntDesign name="heart" size={32} color={color || '#ff5263'} testID="icon-heart"/>
+    : <AntDesign name="hearto" size={32} color={color || '#90abd9'} testID="icon-hearto"/>;
 
   if (!isTouchable) {
     return (
@@ -24,4 +24,4 @@ const FavouriteIcon = ({ isActive, onPress, isTouchable = true }) => {
   );
 };
 
-export default FavouriteIcon;
+export default FavouritesIcon;
