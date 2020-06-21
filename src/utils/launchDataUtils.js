@@ -59,7 +59,7 @@ export const getImageUrl = item => {
 
   // check imageUrl one more time after possible replacement
   if (!httpRe.test(imageUrl)) {
-    return require('./assets/rocketPlaceholder.png');
+    return require('../assets/rocketPlaceholder.png');
   }
 
   return { uri: imageUrl };
@@ -111,7 +111,7 @@ export const getCountryFlagUrl = item => {
   const cc2alpha = countries.alpha3ToAlpha2(cc3alpha);
 
   if (!cc2alpha) {
-    return require('./assets/flagPlaceholder.png');
+    return require('../assets/flagPlaceholder.png');
   }
 
   const uri = `https://www.countryflags.io/${cc2alpha}/flat/24.png`;
